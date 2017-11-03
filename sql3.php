@@ -31,10 +31,14 @@ $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 //$conn->exec("SELECT COUNT(id) FROM accounts WHERE id<6");
 //$conn->exec("SELECT * FROM accounts where id<6");
 //$conn->commit();	
-	//$sql = "SELECT COUNT(id) FROM `accounts`";
-	
+
+//$sql = "SELECT count(id) FROM `accounts`";
+//$result = $conn->prepare($sql);
+
+//echo "$sql";	
+
 	$stmt = $conn->prepare("SELECT * FROM accounts where id<6"); 
-	$num_rows = mysql_num_rows(mysql_query("SELECT * FROM accounts", $link));
+	$num_rows = $stmt->fetchColumn();
 	echo "$num_rows"."<br>";
 	$stmt->execute();
 	     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC); 
