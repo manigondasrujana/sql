@@ -38,9 +38,12 @@ $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 //echo "$sql";	
 
 	$stmt = $conn->prepare("SELECT * FROM accounts where id<6"); 
-	$num_rows = $pdo->query('SELECT * FROM accounts where id<6')->fetchColumn();
-	echo "$num_rows"."<br>";
+//	$num_rows = $pdo->query('SELECT * FROM accounts where id<6')->fetchColumn();
+//	echo count($num_rows)."<br>";
+	
 	$stmt->execute();
+	$row_count = $stmt->rowCount();
+	echo $row_count."<br>";
 	     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC); 
 	         foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) 
 		 { 
