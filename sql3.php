@@ -38,7 +38,7 @@ $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 //echo "$sql";	
 
 	$stmt = $conn->prepare("SELECT * FROM accounts where id<6"); 
-	$num_rows = $stmt->fetchColumn();
+	$num_rows = $pdo->query('SELECT * FROM accounts where id<6')->fetchColumn();
 	echo "$num_rows"."<br>";
 	$stmt->execute();
 	     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC); 
