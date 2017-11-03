@@ -27,14 +27,22 @@ $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         echo "Connected Successfully"."<br>";
 	echo "<br>";
-	$sql = "SELECT COUNT(id) FROM `accounts`";
+//$conn->beginTransaction();
+//$conn->exec("SELECT COUNT(id) FROM accounts WHERE id<6");
+//$conn->exec("SELECT * FROM accounts where id<6");
+//$conn->commit();	
+	//$sql = "SELECT COUNT(id) FROM `accounts`";
 	
 	$stmt = $conn->prepare("SELECT * FROM accounts where id<6"); 
-	    $stmt->execute();
+	$num_rows = mysql_num_rows(mysql_query("SELECT * FROM accounts", $link));
+	echo "$num_rows"."<br>";
+	$stmt->execute();
 	     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC); 
-	         foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) { 
-		         echo $v;
+	         foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) 
+		 { 
+		 echo $v;
 			     }
+
 			     }
 catch(PDOException $e) {
     echo "Error: " . $e->getMessage();
