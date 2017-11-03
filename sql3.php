@@ -27,6 +27,8 @@ $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         echo "Connected Successfully"."<br>";
 	echo "<br>";
+	$sql = "SELECT COUNT(id) FROM `accounts`";
+	
 	$stmt = $conn->prepare("SELECT * FROM accounts where id<6"); 
 	    $stmt->execute();
 	     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC); 
