@@ -25,7 +25,7 @@ $dbname = "sm2555";
 try {
 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "Connected Successfully"."<br>";
+        echo "<h1>Connected Successfully</h1>"."<br>";
 	echo "<br>";
 //$conn->beginTransaction();
 //$conn->exec("SELECT COUNT(id) FROM accounts WHERE id<6");
@@ -44,10 +44,11 @@ $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 	$stmt->execute();
 	$row_count = $stmt->rowCount();
 	echo $row_count."<br>";
+	echo "<br>";
 	     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC); 
-	         foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) 
+	         foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $abc=>$def) 
 		 { 
-		 echo $v;
+		 echo $def;
 			     }
 
 			     }
