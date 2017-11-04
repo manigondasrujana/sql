@@ -1,5 +1,5 @@
 <?php
-echo "<table style='border: solid 1px black;'>";
+echo "<table style='width:150px;border:2px solid black;'>";
 echo
 "<tr><th>id</th><th>email</th><th>fname</th><th>lname</th><th>phone</th><th>birthday</th><th>gender</th><th>password</th></tr>";
 
@@ -23,35 +23,24 @@ $password = "tzw8bjLL";
 $dbname = "sm2555";
 
 try {
-$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         echo "<h1>Connected Successfully</h1>"."<br>";
 	echo "<br>";
-//$conn->beginTransaction();
-//$conn->exec("SELECT COUNT(id) FROM accounts WHERE id<6");
-//$conn->exec("SELECT * FROM accounts where id<6");
-//$conn->commit();	
 
-//$sql = "SELECT count(id) FROM `accounts`";
-//$result = $conn->prepare($sql);
-
-//echo "$sql";	
 
 	$stmt = $conn->prepare("SELECT * FROM accounts where id<6"); 
-//	$num_rows = $pdo->query('SELECT * FROM accounts where id<6')->fetchColumn();
-//	echo count($num_rows)."<br>";
-	
 	$stmt->execute();
 	$row_count = $stmt->rowCount();
-	echo $row_count."<br>";
+	echo $row_count." records"."<br>";
 	echo "<br>";
-	     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC); 
-	         foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $abc=>$def) 
-		 { 
-		 echo $def;
-			     }
+	$result = $stmt->setFetchMode(PDO::FETCH_ASSOC); 
+	foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $abc=>$def) 
+	{ 
+	echo $def;
+	}
 
-			     }
+	}
 catch(PDOException $e) {
     echo "Error: " . $e->getMessage();
     }
