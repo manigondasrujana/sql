@@ -1,5 +1,6 @@
 <?php
-echo "<table style='width:150px;border:1px solid black;'>";
+echo "<table
+style='width:750px;border:2px solid blue;'>";
 echo
 "<tr><th>id</th><th>email</th><th>fname</th><th>lname</th><th>phone</th><th>birthday</th><th>gender</th><th>password</th></tr>";
 
@@ -8,7 +9,7 @@ function __construct($it) {
 parent::__construct($it, self::LEAVES_ONLY); 
 }
 function current() {
-return "<td style='width:150px;border:1px solid black;'>" . parent::current(). "</td>";
+return "<td style='width:150px;border:1px solid blue'>" . parent::current(). "</td>";
 }
 function beginChildren() { 
 echo "<tr>"; 
