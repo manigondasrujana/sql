@@ -1,5 +1,5 @@
 <?php
-echo "<table style='width:150px;border:2px solid black;'>";
+echo "<table style='width:150px;border:1px solid black;'>";
 echo
 "<tr><th>id</th><th>email</th><th>fname</th><th>lname</th><th>phone</th><th>birthday</th><th>gender</th><th>password</th></tr>";
 
